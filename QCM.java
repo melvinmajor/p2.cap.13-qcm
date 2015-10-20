@@ -6,5 +6,40 @@
  */
 public class QCM
 {
-    
+
+// Récuperer les données depuis le fichier.
+// Variable pour les questions : string :  question1,2,3,4,5,6,...
+// Variable pour les réponses : string : reponse1a, reponse1b, reponse1c, ...
+// Variable pour la bonne réponse : string : repC : variable de la bonne réponse
+
+// Méthode de correction :  
+// Demander à l'utilisateur : Combien vaut 1 bonne réponse, combien vaut une mauvaise réponse, combien vaut une réponse blanche.
+// Demander à l'utilisateur : Le nombre de point total que le QCM doit remplir
+// Variable pour la bonne réponse : repB : double
+// Variable pour la mauvaise réponse : repM : double
+// Variable pour la réponse blanche : repN : double
+// Variable pour le nombre de points total : pointsTotal : int
+
+// PRNG -> Math.random
+// PRNG doit sortir un nombre aléatoire entre 1 & le nombre max de question sans répétitions.
+
+
+// Vérification de la réponse & Incrémentation des résultats
+// Variable de correction : correction1a, correction1b, ... : VALEUR BOOLEEN
+// Incrémentation des bonnes réponses suivant la variable repB
+// Incrémentation des mauvaises réponses : repM 
+// Incrémenation des réponses blanches : repN
+
+
+// Affichage des résultats : 
+// Score final : XX / XX
+// Score final : Nombre de mauvaises réponses 
+// Score final : Nombre de bonnes réponses
+// Score final : Nombres de réponses blanches
+// Affichage des réponses fausses avec correction
+
+// Sauvegarde des résultats dans un fichier texte.
+
+
+
 }
