@@ -6,7 +6,9 @@
  */
 public class QCM
 {
+//Pour s'aider : "OpenClassroom Programmez en Java"
 
+    
 // Récuperer les données depuis le fichier txt.
 // Variable pour les questions : string :  question1,2,3,4,5,6,...
 // Variable pour les réponses : string : reponse1a, reponse1b, reponse1c, ...
