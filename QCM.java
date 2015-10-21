@@ -1,20 +1,42 @@
+import java.io.IOException;
+import java.io.*;
+
 /**
  * Décrivez votre classe QCM ici.
  *
  * @Julien Pluquet, Gauthier Fossion, Melvin Campos
  * @2015-10-20
  */
-public class QCM
-{
+public class QCM {
 //Pour s'aider : "OpenClassroom Programmez en Java"
 
-    
 // Récuperer les données depuis le fichier txt.
 // Variable pour les questions : string :  question1,2,3,4,5,6,...
 // Variable pour les réponses : string : reponse1a, reponse1b, reponse1c, ...
 // Variable pour la bonne réponse : string : repC : variable de la bonne réponse
 // --> Melvin : 21/10/2015 : Soir
 
+    public static String lectureMots() {
+		//Gestion des Flux IO
+		String str = "";
+		Fichier fi = ouvrirQCM();				
+		int nbrRandom = //Il faudrait faire un lien vers le PRNG ici !			
+		str = fi.lire(nbrRandom);				
+		try {
+				fi.fermer();
+			}
+		catch (Exception e) {					
+				e.printStackTrace();
+			}			
+		return str;
+	}
+	public static Fichier ouvrirQCM() {
+		String nomFichier = "src/QCM.txt";
+		Fichier fi = new Fichier();
+		fi.ouvrir(nomFichier, "Lecture");
+		return fi;
+	}
+	
 // Méthode de correction :  
 // Demander à l'utilisateur : Combien vaut 1 bonne réponse, combien vaut une mauvaise réponse, combien vaut une réponse blanche.
 // Demander à l'utilisateur : Le nombre de point total que le QCM doit remplir

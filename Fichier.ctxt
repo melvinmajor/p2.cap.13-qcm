@@ -1,0 +1,45 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Fichier()
+comment0.text=\r\n\ @category\ Construction\r\n
+comment1.params=mode
+comment1.target=void\ modeAffiche(char)
+comment1.text=\r\n\ @param\ mode\ who\ need\ R\ or\ L\ for\ Reading\ and\ W\ or\ E\ for\ Writing\r\n\ Print\ the\ mode\ currently\ used\r\n
+comment10.params=
+comment10.target=void\ introduireEspace()
+comment10.text=\r\n\ @pre\ mode\ \=\ W\ or\ E\r\n\ @post\ add\ a\ new\ space\ at\ the\ current\ line\r\n
+comment11.params=
+comment11.target=java.lang.String\ lire()
+comment11.text=\r\n\ @pre\ -\r\n\ @post\ lit\ un\ fichier\ et\ renvoie\ une\ string\ si\ cela\ s'est\ bien\ pass\u00E9\ ou\ Error\ IOException\ si\ cette\ erreur\ est\ apparue\r\n
+comment12.params=n
+comment12.target=java.lang.String\ lire(int)
+comment13.params=mot1\ fi
+comment13.target=boolean\ equalsMots(java.lang.String,\ Fichier)
+comment14.params=
+comment14.target=void\ fermer()
+comment14.text=\r\n\ @pre\ avoir\ ouvert\ un\ flux\t\t\t\t\t\t\r\n\ @post\ ferme\ le\ flux\ pr\u00E9c\u00E9demment\ ouvert\r\n
+comment2.params=
+comment2.target=int\ longueurFichier()
+comment2.text=\r\n\ @return\ Int\r\n\ \ The\ function\ return\ the\ length\ of\ the\ file\ currently\ used\ \r\n
+comment3.params=
+comment3.target=void\ toEnd()
+comment3.text=\r\n\ Go\ to\ the\ end\ of\ File\r\n
+comment4.params=
+comment4.target=void\ setNewBufferedReader()
+comment4.text=\r\n\ Create\ a\ new\ Buffered\ Reader\ with\ the\ name\ of\ the\ file\ stocked\ in\ the\ object\ Fichier\r\n
+comment5.params=
+comment5.target=void\ setNewBufferedWriter()
+comment5.text=\r\n\ Create\ a\ new\ Buffered\ Writer\ with\ the\ name\ of\ the\ file\ stocked\ in\ the\ object\ Fichier\r\n
+comment6.params=n
+comment6.target=void\ setMark(int)
+comment6.text=\r\n\ Set\ a\ new\ Mark\ in\ the\ file\ at\ n\ position\r\n\ @param\ n\r\n
+comment7.params=nomDuFichier\ s
+comment7.target=void\ ouvrir(java.lang.String,\ java.lang.String)
+comment7.text=\r\n\ Open\ the\ file\ with\ the\ specified\ name\ and\ the\ specified\ mode\ (Reading\ or\ Writing)\r\n\ @param\ nomDuFichier\r\n\ @param\ s\r\n
+comment8.params=tmp
+comment8.target=void\ ecrireInt(int)
+comment8.text=\r\n\ @pre\ -\r\n\ @post\ ecrit\ dans\ le\ fichier\ le\ int\ re\u00E7u\ en\ param\u00E8tre\r\n
+comment9.params=tmp
+comment9.target=void\ ecrireString(java.lang.String)
+comment9.text=\r\n\ @pre\ tmp\ \!\=\ NULL\r\n\ @post\ ecrit\ dans\ le\ fichier\ le\ string\ re\u00E7u\ en\ param\u00E8tre\r\n
+numComments=15
