@@ -1,0 +1,131 @@
+Class documentation
+<---- javadoc command: ---->
+C:\Program Files\Java\jdk1.8.0_60\bin\javadoc.exe
+-author
+-version
+-nodeprecated
+-package
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+1.8
+-classpath
+C:\Program Files (x86)\BlueJ\lib\bluejcore.jar;C:\Program Files (x86)\BlueJ\lib\junit-4.8.2.jar;D:\BAC1\LSINF1102\Mission02\mcq.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-core.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-device.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-gpio-extension.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-service.jar;D:\BAC1\LSINF1102\Mission02\QCM
+-d
+D:\BAC1\LSINF1102\Mission02\QCM\doc
+-encoding
+UTF-8
+-charset
+UTF-8
+-docletpath
+C:\Program Files (x86)\BlueJ\lib\bjdoclet.jar
+-doclet
+bluej.doclet.doclets.formats.html.HtmlDoclet
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java
+<---- end of javadoc command ---->
+Loading source file D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java...
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:49: error: class, interface, or enum expected
+    public static int getAnswer(Question q) 
+                  ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:55: error: class, interface, or enum expected
+            System.out.println(0);
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:56: error: class, interface, or enum expected
+            Choice [] choices = q.getChoices();
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:59: error: class, interface, or enum expected
+            for (int i = 0; i < choices.length; i++) 
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:59: error: class, interface, or enum expected
+            for (int i = 0; i < choices.length; i++) 
+                            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:59: error: class, interface, or enum expected
+            for (int i = 0; i < choices.length; i++) 
+                                                ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:63: error: class, interface, or enum expected
+                    System.out.println("["+i+"]\t"+choice);
+                    ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:64: error: class, interface, or enum expected
+                }
+                ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:70: error: class, interface, or enum expected
+        Scanner in = new Scanner(System.in);
+        ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:71: error: class, interface, or enum expected
+        return in.nextInt();
+        ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:72: error: class, interface, or enum expected
+    }
+    ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:74: error: class, interface, or enum expected
+    public static void main(String[] args) 
+                  ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:78: error: class, interface, or enum expected
+            System.out.println("Sur combien de points le QCMM doit-il être ?");
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:79: error: class, interface, or enum expected
+            double pointsTotal = saisieUtilisateur.nextInt();
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:80: error: class, interface, or enum expected
+            System.out.println("Combien vaut une bonne réponse ?");
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:81: error: class, interface, or enum expected
+            double repB = saisieUtilisateur.nextDouble(); 
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:82: error: class, interface, or enum expected
+            System.out.println("Combien vaut une mauvaise réponse ?");
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:83: error: class, interface, or enum expected
+            double repM = saisieUtilisateur.nextDouble(); 
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:84: error: class, interface, or enum expected
+            System.out.println("Combien vaut une réponse blanche ?");
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:85: error: class, interface, or enum expected
+            double repN = saisieUtilisateur.nextDouble(); 
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:87: error: class, interface, or enum expected
+            System.out.println(pointsTotal);
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:88: error: class, interface, or enum expected
+            System.out.println(repB);
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:89: error: class, interface, or enum expected
+            System.out.println(repM);
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:90: error: class, interface, or enum expected
+            System.out.println(repN);
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:92: error: class, interface, or enum expected
+            String filename = "QCM.txt";
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:94: error: class, interface, or enum expected
+            AssessmentForm mcq = AssessmentFormLoader.buildQuestionnaire(filename);
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:97: error: class, interface, or enum expected
+        Question [] questions = mcq.getQuestions();
+        ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:99: error: class, interface, or enum expected
+        double totalScore = 0.0;
+        ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:102: error: class, interface, or enum expected
+        for (int i = 0; i < questions.length; i++) {
+        ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:102: error: class, interface, or enum expected
+        for (int i = 0; i < questions.length; i++) {
+                        ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:102: error: class, interface, or enum expected
+        for (int i = 0; i < questions.length; i++) {
+                                              ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:104: error: class, interface, or enum expected
+            totalScore += simpleGrader(q,getAnswer(q));
+            ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:105: error: class, interface, or enum expected
+        }
+        ^
+D:\BAC1\LSINF1102\Mission02\QCM\AssessmentFormConsole.java:109: error: class, interface, or enum expected
+    }
+    ^
+34 errors
