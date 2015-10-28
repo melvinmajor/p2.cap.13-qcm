@@ -36,7 +36,7 @@ public final class AssessmentFormConsole
             // On propose a l'utilisateur de ne pas repondre
             System.out.println("["+choices.length+"]\tJe ne desire pas repondre");
       
-            System.out.println("SVP, insérez une réponse et appuyer sur Entrer...");
+            System.out.println("SVP, insï¿½rez une rï¿½ponse et appuyer sur Entrer...");
       
             // on demande a l'etudiant de taper au clavier sa reponse (un entier parmi les choix possibles)
             // ceci est equivalent a TextIO.getIntLn(), vu au cours avec Olivier Bonaventure et Charles Pecheur
@@ -107,5 +107,22 @@ public final class AssessmentFormConsole
 
     }
 
-
 }
+
+
+
+
+// ecrire dans un fichier TXT
+import java.io.*;
+// import java.lang.Exception/*;
+    private BufferedWriter fW; // a initialiser
+    
+    public void ecrireDouble(double tmp) throws IOException
+	{
+		String chaine = "";
+		chaine = String.valueOf(tmp);
+		assert(chaine != null) : "Cette chaine est nulle !";
+			fW.write(chaine, 0, chaine.length()); //fW est un BufferedWriter
+			fW.newLine(); //fW est un BufferedWriter
+	}
+// fin de la methode pour ecrire dans un fichier TXT
