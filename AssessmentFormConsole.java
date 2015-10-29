@@ -7,13 +7,20 @@ import mcq.Question;
 import mcq.AssessmentForm;
 import util.PRNG;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import java.lang.Math;
+
 /**
- * Un simple simulateur de questionnaire à choix multiple fonctionnant en mode console
- * Vous pouvez modifier ce fichier pour votre projet ou vous en inspirer librement.
- * Comme vous pouvez voir nous fournissons à titre d'exemple une simple methode d'évaluation (simpleGrader).
- * Les questions sont toujours présentées dans le même ordre ainsi que les propositions de réponses.
- * N'hésitez pas à implémenter d'autres évaluateurs et ajouter de l'aléatoire dans la présentation/selection des questions
- * et des choix.
+ * 
  * @author Gauthier Fossion, Melvin Campos, Julien Pluquet
  */
 public final class AssessmentFormConsole 
@@ -34,9 +41,9 @@ public final class AssessmentFormConsole
                     System.out.println("["+i+"]\t"+choice);
                 }
             // On propose à l'utilisateur de ne pas répondre
-            System.out.println("["+choices.length+"]\tJe ne désire pas répondre");
+            System.out.println("["+choices.length+"]\tJe ne desire pas repondre");
       
-            System.out.println("Please, input an answer and press Enter ...");
+            System.out.println("Votre reponse : ");
       
             // on demande à l'étudiant de taper au clavier sa réponse (un entier parmi les choix possibles)
             // ceci est equivalent à TextIO.getIntLn() vu au cours avec Olivier Bonaventure et Charles Pecheur
@@ -48,23 +55,23 @@ public final class AssessmentFormConsole
     public static void main(String[] args) 
         {
             
+            System.out.println("Bienvenue ! : ");
+            
             // On demande les points du QCM
             Scanner saisieUtilisateur = new Scanner(System.in);
-            System.out.println("Sur combien de points le QCMM doit-il être ?");
+            
+            System.out.println("Entrez votre nom : ");
+            String pseudo = saisieUtilisateur.nextLine();
+            System.out.println();
+            System.out.println("Sur combien de points le QCM doit-il être ?");
             double pointsTotal = saisieUtilisateur.nextInt();
-            System.out.println("Combien vaut une bonne réponse ?");
+            System.out.println("Combien vaut une bonne reponse ?");
             double repB = saisieUtilisateur.nextDouble(); 
-            System.out.println("Combien vaut une mauvaise réponse ?");
+            System.out.println("Combien vaut une mauvaise reponse ?");
             double repM = saisieUtilisateur.nextDouble(); 
             System.out.println("Combien vaut une réponse blanche ?");
-            double repN = saisieUtilisateur.nextDouble(); 
-            
-            // On les affiches
-            System.out.println(pointsTotal);
-            System.out.println(repB);
-            System.out.println(repM);
-            System.out.println(repN);
-            
+            double repN = saisieUtilisateur.nextDouble();
+
             String filename = "QCM.txt";
             // Charchement du QCM depuis le fichier (questions et réponses aux questions)
             AssessmentForm mcq = AssessmentFormLoader.buildQuestionnaire(filename);
@@ -73,39 +80,125 @@ public final class AssessmentFormConsole
             Question [] questions = mcq.getQuestions();
         
             double totalScore = 0.0;
+            int nbreRepB = 0;
+            int nbreRepN = 0;
+            int nbreRepM =0;
             // On itère sur chaque question pour evalue le score de l'étudiant à cette question
             // Suggestion: on pourrait iterer dans un ordre aleatoire ou sur un sous ensemble aleatoire des questions
-            for (int i = 0; i < questions.length; i++) 
+                 
+            for(int i =0; i < questions.length; i++) 
             {
                 Question q = questions[i];
                 //getAnswer(q) te renvoie la réponse entrée par l'utilisateur.
                 int reponseUtilisateur = getAnswer(q);
                 Choice [] choices = q.getChoices();
-                
                 if (q.isCorrectChoice(reponseUtilisateur))
                     {
+                        System.out.println("Felicitations !");
                         double simpleGrader = repB;
+                        nbreRepB++;
+                        totalScore = totalScore + repB;
                     }
                 else 
                     {
                         if (reponseUtilisateur == choices.length)
                         {
+                           System.out.println("Dommage !");
                            double simpleGrader = repN;
+                           nbreRepN++;
+                           totalScore = totalScore + repN;
                         }
                         else
                         {
-                            double simpleGrader = repM;   
+                            System.out.println("Aie,erreur !");
+                            double simpleGrader = repM;
+                            nbreRepM++;
+                            totalScore = totalScore + repM;
                         }
                     }
-                
-                // A toi de jouer mon ami ! 
-                totalScore = 0.0; // A compléter
             }
       
-            // affichage du score final
-            System.out.println("your score is:"+totalScore);
-
+            Date today = new Date();
+            DateFormat fullDateFormat = DateFormat.getDateTimeInstance(DateFormat.FULL,DateFormat.FULL);
+            
+            // Affichage du score final
+            System.out.println();
+            System.out.println();
+            System.out.println(fullDateFormat.format(today));
+            System.out.println("Merci d'avoir répondu à notre QCM.");
+            System.out.println("Voici le détail de vos points :");
+            System.out.println();
+            System.out.println("Sur "+questions.length+" questions !");
+            System.out.println("Nombre de bonne(s) reponse(s) : "+nbreRepB);
+            System.out.println("Nombre de mauvaise(s) reponse(s) : "+nbreRepM);
+            System.out.println("Nombre de question(s) non répondue(s) : "+nbreRepN);
+            System.out.println();
+            System.out.println("Suivant les criteres de cotation suivant : ");
+            System.out.println("Pour une bonne reponse : +"+repB);
+            System.out.println("Pour une mauvaise reponse : "+repM);
+            System.out.println("Pour une reponse blanche : "+repN);
+            System.out.println("Sur un total de : "+pointsTotal);
+            System.out.println();
+            System.out.println("Vous avez : "+totalScore+"/"+pointsTotal);
+            
+           
+            // Ecriture dans le fichier
+           try
+           {
+								
+			    String adressedufichier = System.getProperty("user.dir") + "/MesResultat_"+pseudo+".txt";
+				FileWriter fw = new FileWriter(adressedufichier, true);
+				
+				// le BufferedWriter output auquel on donne comme argument le FileWriter fw cree juste au dessus
+				BufferedWriter output = new BufferedWriter(fw);
+				
+				//on marque dans le fichier ou plutot dans le BufferedWriter qui sert comme un tampon(stream)
+				
+				output.write(fullDateFormat.format(today));
+				output.write("\r\n");
+				output.write("Merci d'avoir répondu à notre QCM.");
+				output.write("\r\n");
+				output.write("\r\n");
+                output.write("Voici le détail de vos points :");
+                output.write("\r\n");                
+                output.write("Sur "+questions.length+" questions !");
+                output.write("\r\n");
+                output.write("Nombre de bonne(s) reponse(s) : "+nbreRepB);
+                output.write("\r\n");
+                output.write("Nombre de mauvaise(s) reponse(s) : "+nbreRepM);
+                output.write("\r\n");
+                output.write("Nombre de question(s) non répondue(s) : "+nbreRepN);
+                output.write("\r\n");
+                output.write("\r\n");
+                output.write("Suivant les criteres de cotation suivant : ");
+                output.write("\r\n");
+                output.write("Pour une bonne reponse : +"+repB);
+                output.write("\r\n");
+                output.write("Pour une mauvaise reponse : "+repM);
+                output.write("\r\n");
+                output.write("Pour une reponse blanche : "+repN);
+                output.write("\r\n");
+                output.write("Sur un total de : "+pointsTotal);
+                output.write("\r\n");
+                output.write("\r\n");
+                output.write("Vous avez : "+totalScore+"/"+pointsTotal);
+                output.write("\r\n");
+                output.write("\r\n");
+                output.write("-------------------------------------------------------");
+                output.write("\r\n");
+                output.write("\r\n");
+				//on peut utiliser plusieurs fois methode write
+				
+				output.flush();
+				//ensuite flush envoie dans le fichier, ne pas oublier cette methode pour le BufferedWriter
+				
+				output.close();
+				//et on le ferme
+				System.out.println("Resultat enregistrée dans : "+adressedufichier+".");
+			}
+			catch(IOException ioe){
+				System.out.print("Erreur : ");
+				ioe.printStackTrace();
+			}		
     }
-
-
 }
