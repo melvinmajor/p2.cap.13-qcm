@@ -5,7 +5,6 @@ import mcq.Choice;
 import mcq.AssessmentFormLoader;
 import mcq.Question;
 import mcq.AssessmentForm;
-import util.PRNG;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -72,26 +71,64 @@ public final class AssessmentFormConsole
             System.out.println("Combien vaut une réponse blanche ?");
             double repN = saisieUtilisateur.nextDouble();
 
-            String filename = "QCM.txt";
+            String filename = "QCM2.txt";
             // Charchement du QCM depuis le fichier (questions et réponses aux questions)
             AssessmentForm mcq = AssessmentFormLoader.buildQuestionnaire(filename);
 
             // Recupération du tableau des questions
-            Question [] questions = mcq.getQuestions();
-        
+            Question [] questions = mcq.getQuestions();            
+            
             double totalScore = 0.0;
             int nbreRepB = 0;
             int nbreRepN = 0;
             int nbreRepM =0;
             // On itère sur chaque question pour evalue le score de l'étudiant à cette question
             // Suggestion: on pourrait iterer dans un ordre aleatoire ou sur un sous ensemble aleatoire des questions
-                 
+            
+            int[] numeroUtilise = new int[questions.length];
+            for(int i=0; i < questions.length; i++)
+            {
+                numeroUtilise[i] = -1;
+            }
+       
+            for(int i = 0; i < questions.length; i++)
+            {
+                while(numeroUtilise[i] == -1)
+                {
+                    int lower = 0;
+                    int higher = questions.length;
+                    int random = (int)(Math.random() * (higher-lower)) + lower;
+              
+                    System.out.println("Chiffre random :"+random);
+                    System.out.println("Chiffre Questions lengt :"+questions.length);
+              
+                    int e=0;
+                    boolean noSame = true;
+                        while(e < i && noSame == true)
+                        {
+                            if(numeroUtilise[e] == random)
+                            {
+                                noSame = false;
+                            }
+                            e = e+1;
+                        }
+              
+                        if(noSame == true)
+                        {
+                            numeroUtilise[i] = random;
+                        }
+                    }
+                }
+            
             for(int i =0; i < questions.length; i++) 
             {
-                Question q = questions[i];
+                int number = numeroUtilise[i];
+                Question q = questions[number];
                 //getAnswer(q) te renvoie la réponse entrée par l'utilisateur.
                 int reponseUtilisateur = getAnswer(q);
                 Choice [] choices = q.getChoices();
+                
+                
                 if (q.isCorrectChoice(reponseUtilisateur))
                     {
                         System.out.println("Felicitations !");
@@ -145,20 +182,20 @@ public final class AssessmentFormConsole
             // Ecriture dans le fichier
            try
            {
-								
-			    String adressedufichier = System.getProperty("user.dir") + "/MesResultat_"+pseudo+".txt";
-				FileWriter fw = new FileWriter(adressedufichier, true);
-				
-				// le BufferedWriter output auquel on donne comme argument le FileWriter fw cree juste au dessus
-				BufferedWriter output = new BufferedWriter(fw);
-				
-				//on marque dans le fichier ou plutot dans le BufferedWriter qui sert comme un tampon(stream)
-				
-				output.write(fullDateFormat.format(today));
-				output.write("\r\n");
-				output.write("Merci d'avoir répondu à notre QCM.");
-				output.write("\r\n");
-				output.write("\r\n");
+                                
+                String adressedufichier = System.getProperty("user.dir") + "/MesResultat_"+pseudo+".txt";
+                FileWriter fw = new FileWriter(adressedufichier, true);
+                
+                // le BufferedWriter output auquel on donne comme argument le FileWriter fw cree juste au dessus
+                BufferedWriter output = new BufferedWriter(fw);
+                
+                //on marque dans le fichier ou plutot dans le BufferedWriter qui sert comme un tampon(stream)
+                
+                output.write(fullDateFormat.format(today));
+                output.write("\r\n");
+                output.write("Merci d'avoir répondu à notre QCM.");
+                output.write("\r\n");
+                output.write("\r\n");
                 output.write("Voici le détail de vos points :");
                 output.write("\r\n");                
                 output.write("Sur "+questions.length+" questions !");
@@ -187,18 +224,18 @@ public final class AssessmentFormConsole
                 output.write("-------------------------------------------------------");
                 output.write("\r\n");
                 output.write("\r\n");
-				//on peut utiliser plusieurs fois methode write
-				
-				output.flush();
-				//ensuite flush envoie dans le fichier, ne pas oublier cette methode pour le BufferedWriter
-				
-				output.close();
-				//et on le ferme
-				System.out.println("Resultat enregistrée dans : "+adressedufichier+".");
-			}
-			catch(IOException ioe){
-				System.out.print("Erreur : ");
-				ioe.printStackTrace();
-			}		
+                //on peut utiliser plusieurs fois methode write
+                
+                output.flush();
+                //ensuite flush envoie dans le fichier, ne pas oublier cette methode pour le BufferedWriter
+                
+                output.close();
+                //et on le ferme
+                System.out.println("Resultat enregistrée dans : "+adressedufichier+".");
+            }
+            catch(IOException ioe){
+                System.out.print("Erreur : ");
+                ioe.printStackTrace();
+            }       
     }
 }
