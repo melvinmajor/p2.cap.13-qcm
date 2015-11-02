@@ -19,7 +19,7 @@ import java.lang.Math;
 
 /**
  * 
- * @author Gauthier Fossion, Melvin Campos, Julien Pluquet
+ * @author Gauthier Fossion, Melvin Campos Casares, Julien Pluquet
  */
 public final class AssessmentFormConsole 
 {
